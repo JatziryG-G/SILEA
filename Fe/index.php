@@ -155,7 +155,7 @@ $recienLlegados = array_filter($productos, function($producto) use ($recienLlega
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Principal</a>
                             <a href="shop.php" class="nav-item nav-link">Comprar</a>
-                            <a href="detail.html" class="nav-item nav-link">Cesta</a>
+                            <a href="detail.php" class="nav-item nav-link">Cesta</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Más</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -354,9 +354,13 @@ $recienLlegados = array_filter($productos, function($producto) use ($recienLlega
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between bg-light border">
-                    <a href="" class="btn btn-sm text-dark p-0">
+                   <!-- <a href="" class="btn btn-sm text-dark p-0">
+                        <i class="fas fa-eye text-primary mr-1"></i>Ver
+                    </a>-->
+                    <a href="detail.php?id=<?= $producto['id'] ?>" class="btn btn-sm text-dark p-0">
                         <i class="fas fa-eye text-primary mr-1"></i>Ver
                     </a>
+
                     <form action="carrito.php" method="POST">
                         <input type="hidden" name="id" value="<?= $producto['id'] ?>">
                         <button type="submit" class="btn btn-sm text-dark p-0 border-0 bg-transparent">

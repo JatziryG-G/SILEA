@@ -326,16 +326,23 @@ $productosPagina = array_slice($productos, $inicio, $porPagina);
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">
-                                    <form action="carrito.php" method="POST" class="w-100 text-center">
-                                        <input type="hidden" name="id" value="<?= $producto['id'] ?>">
-                                        <button class="btn btn-sm btn-primary" type="submit">
-                                            <i class="fas fa-shopping-cart text-white mr-1"></i>Agregar al carrito
-                                        </button>
-                                    </form>
-                                </div>
+                                <!-- <a href="" class="btn btn-sm text-dark p-0">
+                                        <i class="fas fa-eye text-primary mr-1"></i>Ver
+                                    </a>-->
+                                    <a href="detail.php?id=<?= $producto['id'] ?>" class="btn btn-sm text-dark p-0">
+                                        <i class="fas fa-eye text-primary mr-1"></i>Ver
+                                    </a>
+
+                                <form action="carrito.php" method="POST">
+                                    <input type="hidden" name="id" value="<?= $producto['id'] ?>">
+                                    <button type="submit" class="btn btn-sm text-dark p-0 border-0 bg-transparent">
+                                        <i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar al Carrito
+                                    </button>
+                                </form>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
+                <?php endforeach; ?>
                 <?php else: ?>
                     <p class="text-center">No hay productos disponibles.</p>
                 <?php endif; ?>
@@ -367,7 +374,7 @@ $productosPagina = array_slice($productos, $inicio, $porPagina);
     </div> <!-- AQUÍ se cierra la row que alinea filtro y productos -->
 </div>
 
-        <!-- Shop Product end -->    
+    <!-- Shop Product end -->    
 
     <!-- Footer Start -->
     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">

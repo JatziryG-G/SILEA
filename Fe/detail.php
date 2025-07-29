@@ -1,3 +1,23 @@
+<?php
+include __DIR__ . '/../productos.php';
+
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$producto = null;
+
+// Buscar el producto por ID
+foreach ($productos as $p) {
+    if ($p['id'] === $id) {
+        $producto = $p;
+        break;
+    }
+}
+
+if (!$producto) {
+    echo "<p>Producto no encontrado.</p>";
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,6 +110,69 @@
         </div>
     </div>
     <!-- Topbar End -->
+
+        <!-- Navbar Start -->
+    <div class="container-fluid">
+        <div class="row border-top px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                    <h6 class="m-0">Categorías</h6>
+                    <i class="fa fa-angle-down text-dark"></i>
+                </a>
+                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
+                    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown">Todo <i class="fa fa-angle-down float-right mt-1"></i></a>
+                            <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                                <a href="" class="dropdown-item">Ropa de mujer</a>
+                                <a href="" class="dropdown-item">Accesorios</a>
+                                <a href="" class="dropdown-item">Zapatos</a>
+                            </div>
+                        </div>
+                        <a href="" class="nav-item nav-link">Partes Altas </a>
+                        <a href="" class="nav-item nav-link">Partes Bajas </a>
+                        <a href="" class="nav-item nav-link">Conjuntos</a>
+                        <a href="" class="nav-item nav-link">Vestidos</a>
+                        <a href="" class="nav-item nav-link">Faldas</a>
+                        <a href="" class="nav-item nav-link">Descuentos</a>
+                        <!--<a href="" class="nav-item nav-link"></a>
+                        <a href="" class="nav-item nav-link">Jackets</a>
+                        <a href="" class="nav-item nav-link">Shoes</a>-->
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                        <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">S</span>ILEA</h1>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="index.php" class="nav-item nav-link">Principal</a>
+                            <a href="shop.php" class="nav-item nav-link active">Comprar</a>
+                            <a href="detail.php" class="nav-item nav-link">Cesta</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Más</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="cart.html" class="dropdown-item">Carrito</a>
+                                    <a href="checkout.html" class="dropdown-item">Pago</a>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="nav-item nav-link">Contacto</a>
+                        </div>
+                        <div class="navbar-nav ml-auto py-0">
+                            <a href="" class="nav-item nav-link">Iniciar sesíon</a>
+                            <a href="" class="nav-item nav-link">Registrarse</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
 
 
 
@@ -211,22 +294,6 @@
                             <input type="radio" class="custom-control-input" id="color-1" name="color">
                             <label class="custom-control-label" for="color-1">Light Blue</label>
                         </div>
-                        <!--<div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-2" name="color">
-                            <label class="custom-control-label" for="color-2">White</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-3" name="color">
-                            <label class="custom-control-label" for="color-3">Red</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-4" name="color">
-                            <label class="custom-control-label" for="color-4">Blue</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-5" name="color">
-                            <label class="custom-control-label" for="color-5">Green</label>
-                        </div>-->
                     </form>
                 </div>
                 <div class="d-flex align-items-center mb-4 pt-2">
@@ -274,8 +341,6 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="tab-pane-1">
                         <h4 class="mb-3">Acerca del Producto</h4>
-                        <!--<p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
-                        <p>Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum. Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.</p>-->
                     <p>
                     </p>
                     <div class="row">
@@ -409,6 +474,7 @@
 
 
     <!-- Products Start -->
+    
     <div class="container-fluid py-5">
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">Podría Gustarte</span></h2>
@@ -494,7 +560,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
+
     <!-- Products End -->
 
 
