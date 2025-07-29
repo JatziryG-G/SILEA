@@ -194,5 +194,58 @@ $productos = [
         "categoria"=> "Ropa"
     ],
 
+    [
+        "id" => 22,
+        "nombre" => "Vestido Mini Oversize de Tejido Vaquero Sólido con Bolsillos",
+        "precio" => 655.00,
+        "imagen" => "img/PG_1.jpg",
+        "stock" => 60,
+        "categoria"=> "Ropa"
+    ],
+
+    [
+        "id" => 23,
+        "nombre" => "Romper de algodón con cuello cuadrado y estampado de cuadros y encaje",
+        "precio" => 683.00,
+        "imagen" => "img/PG_2.jpg",
+        "stock" => 40,
+        "categoria"=> "Ropa"
+    ],
+
+    [
+        "id" => 24,
+        "nombre" => "Vestido Mini Vaquero Cuello Redondo Sólido con Bolsillo y Botones",
+        "precio" => 903.00,
+        "imagen" => "img/PG_3.jpg",
+        "stock" => 60,
+        "categoria"=> "Ropa"
+    ],
+    
+    [
+        "id" => 25,
+        "nombre" => "Chaleco Floral de Algodón 100% con Cuello en V Corto",
+        "precio" => 853.00,
+        "imagen" => "img/PG_4.jpg",
+        "stock" => 70,
+        "categoria"=> "Ropa"
+    ],
+
+    [
+        "id" => 26,
+        "nombre" => "Romper de camiseta vaquera sin espalda",
+        "precio" => 845.00,
+        "imagen" => "img/PG_5.jpg",
+        "stock" => 80,
+        "categoria"=> "Ropa"
+    ],
+
+        [
+        "id" => 27,
+        "nombre" => "Vestido Mini Oversize de Tejido Vaquero Sólido con Bolsillos",
+        "precio" => 845.00,
+        "imagen" => "img/PG_6.jpg",
+        "stock" => 90,
+        "categoria"=> "Ropa"
+    ],
 ];
 ?>
