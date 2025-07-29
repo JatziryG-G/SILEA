@@ -189,7 +189,7 @@ $productos = [
         "id" => 21,
         "nombre" => "Collar de pendiente de flor decorado con piedras imitación diamante",
         "precio" => 199.99,
-        "imagen" => "img/Recien_1.jpg",
+        "imagen" => "img/Recien_8.jpg",
         "stock" => 70,
         "categoria"=> "Ropa"
     ],
