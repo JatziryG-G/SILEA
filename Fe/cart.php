@@ -1,51 +1,12 @@
 <?php
 
 session_start();
-include 'productos.php'; 
+include(__DIR__ . '/../productos.php');
 
-if (!isset($_GET['id'])) {
-    header('Location: shop.php');
-    exit;
-}
-
-$id = $_GET['id'];
-$producto = null;
-
-foreach ($productos as $p) {
-    if ($p['id'] == $id) {
-        $producto = $p;
-        break;
-    }
-}
-
-if (!$producto) {
-    header('Location: shop.php');
-    exit;
-}
-
-//inicia el acrrito
-if (!isset($_SESSION['carrito'])) {
-    $_SESSION['carrito'] = [];
-}
-
-
-if (isset($_SESSION['carrito'][$id])) {
-    $_SESSION['carrito'][$id]['cantidad']++;
-} else {
-    $_SESSION['carrito'][$id] = [
-        'id' => $producto['id'],
-        'nombre' => $producto['nombre'],
-        'precio' => $producto['precio'],
-        'imagen' => $producto['imagen'],
-        'cantidad' => 1
-    ];
-}
-
-header('Location: carrito.php'); 
-exit;
-
-
+$carrito = $_SESSION['carrito'] ?? [];
+$total = 0;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -186,7 +147,7 @@ exit;
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Más</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Carrito</a>
+                                    <a href="cart.php" class="dropdown-item">Carrito</a>
                                     <a href="checkout.html" class="dropdown-item">Pago</a>
                                 </div>
                             </div>
@@ -219,7 +180,103 @@ exit;
 
 
     <!-- Cart Start -->
-    <div class="container-fluid pt-5">
+    <div class="container-fluid pt-5"> 
+        <div class="row px-xl-5">
+            <div class="col-lg-8 table-responsive mb-5">
+                <table class="table table-bordered text-center mb-0">
+                    <thead class="bg-secondary text-dark">
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        <?php
+                        $subtotal = 0;
+                        foreach ($carrito as $item):
+                            $totalProducto = $item['precio'] * $item['cantidad'];
+                            $subtotal += $totalProducto;
+                        ?>
+                            <tr>
+                                <td class="align-middle">
+                                    <img src="<?= $item['imagen'] ?>" alt="" style="width: 50px;">
+                                    <?= htmlspecialchars($item['nombre']) ?>
+                                </td>
+                                <td class="align-middle">$<?= number_format($item['precio'], 2) ?></td>
+                                <td class="align-middle">
+                                    <div class="input-group quantity mx-auto" style="width: 100px;">
+                                        <div class="input-group-btn">
+                                            <a href="actualizar_carrito.php?id=<?= $item['id'] ?>&accion=restar" class="btn btn-sm btn-primary btn-minus">
+                                                <i class="fa fa-minus"></i>
+                                            </a>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm bg-secondary text-center" value="<?= $item['cantidad'] ?>" readonly>
+                                        <div class="input-group-btn">
+                                            <a href="actualizar_carrito.php?id=<?= $item['id'] ?>&accion=sumar" class="btn btn-sm btn-primary btn-plus">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle">$<?= number_format($totalProducto, 2) ?></td>
+                                <td class="align-middle">
+                                    <form action="eliminar_carrito.php" method="POST" style="display:inline;">
+                                        <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                                        <button type="submit" class="btn btn-sm btn-primary">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Resumen -->
+            <div class="col-lg-4">
+                <form class="mb-5" action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control p-4" placeholder="Código del cupón">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary">Aplicar Cupón</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Resumen</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Subtotal</h6>
+                            <h6 class="font-weight-medium">$<?= number_format($subtotal, 2) ?></h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Envío</h6>
+                            <h6 class="font-weight-medium">$10.00</h6>
+                        </div>
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5 class="font-weight-bold">Total</h5>
+                            <h5 class="font-weight-bold">
+                                $<?= number_format($subtotal + 10, 2) ?>
+                            </h5>
+                        </div>
+                        <button class="btn btn-block btn-primary my-3 py-3">Pagar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+
+    <!--<div class="container-fluid pt-5">
         <div class="row px-xl-5">
             <div class="col-lg-8 table-responsive mb-5">
                 <table class="table table-bordered text-center mb-0">
@@ -340,19 +397,20 @@ exit;
                         </tr>
                     </tbody>
                 </table>
+
             </div>
             <div class="col-lg-4">
                 <form class="mb-5" action="">
                     <div class="input-group">
-                        <input type="text" class="form-control p-4" placeholder="Coupon Code">
+                        <input type="text" class="form-control p-4" placeholder="Código del cupon">
                         <div class="input-group-append">
-                            <button class="btn btn-primary">Apply Coupon</button>
+                            <button class="btn btn-primary">Aplicar Cupon</button>
                         </div>
                     </div>
                 </form>
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+                        <h4 class="font-weight-semi-bold m-0">Resumen</h4>
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
@@ -360,7 +418,7 @@ exit;
                             <h6 class="font-weight-medium">$150</h6>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Shipping</h6>
+                            <h6 class="font-weight-medium">Envio</h6>
                             <h6 class="font-weight-medium">$10</h6>
                         </div>
                     </div>
@@ -369,12 +427,13 @@ exit;
                             <h5 class="font-weight-bold">Total</h5>
                             <h5 class="font-weight-bold">$160</h5>
                         </div>
-                        <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
+                        <button class="btn btn-block btn-primary my-3 py-3">Pagar</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
     <!-- Cart End -->
 
 
@@ -406,10 +465,10 @@ exit;
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Enlaces</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Principal</a>
-                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Nuestra tienda</a>
-                            <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a>
-                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Carrito</a>
+                            <a class="text-dark mb-2" href="index.php"><i class="fa fa-angle-right mr-2"></i>Principal</a>
+                            <a class="text-dark mb-2" href="shop.php"><i class="fa fa-angle-right mr-2"></i>Nuestra tienda</a>
+                            <a class="text-dark mb-2" href="detail.php"><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a>
+                            <a class="text-dark mb-2" href="cart.php"><i class="fa fa-angle-right mr-2"></i>Carrito</a>
                             <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                             <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contactanos</a>
                         </div>

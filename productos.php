@@ -10,7 +10,7 @@ $productos = [
             "img/producto_1_2.jpg",
             "img/producto_1_3.jpg",
         ],
-        "descripción"=>"",
+        "descripción"=>"Crop Top rayado con cuello en barco",
         "detalles"=>[
             "ocasion"=>"Escuela",
             "patron"=>"Rayas",
@@ -44,13 +44,13 @@ $productos = [
         "nombre" => "Top de tirantes de punto con cuello redondo y botones",
         "precio" => 550.00,
         "imagen" => "img/producto_3.jpg",
-                "imagenes"=>[
+        "imagenes"=>[
             "img/producto_3.jpg",
             "img/producto_3_1.jpg",
             "img/producto_3_2.jpg",
             "img/producto_3_3.jpg",
         ],
-        "descripción"=>"",
+        "descripción"=>"Top de tirantes de punto con cuello redondo y botones",
         "detalles"=>[
             "ocasion"=>"Informal diario, Escuela",
             "patron"=>"Solido",
@@ -131,8 +131,27 @@ $productos = [
         "nombre" => "Chaleco de cuello en V con rayas y cinturón",
         "precio" => 571.00,
         "imagen" => "img/Trendy_1.jpg",
+        "imagenes"=>[
+            "img/Trendy_1_1.jpg",
+            "img/Trendy_1_2.jpg",
+            "img/Trendy_1_3.jpg",
+            "img/producto_1.jpg",
+        ],
+        "descripción"=>"Chaleco de cuello en V con rayas y cinturón",
+        "detalles"=>[
+            "ocasion"=>"Trabajo",
+            "patron"=>"Rayas",
+            "detalle ropa"=>"Cinturon",
+            "material"=>"Coquille",
+            "composición"=>"50% Biscosa 28% Poliester 22% Poliamida",
+            "ajuste"=>"Regular",
+            "cintura"=>"No aplica",
+            "almohadilla"=>"Sin relleno",
+            "longitud"=>"Regular",
+            "bolsillo"=>"No aplica",
         "stock" => 30,
         "categoria"=> "Ropa"
+        ],
     ],
 
     [
@@ -279,7 +298,7 @@ $productos = [
         "categoria"=> "Ropa"
     ],
 
-        [
+    [
         "id" => 27,
         "nombre" => "Vestido Mini Oversize de Tejido Vaquero Sólido con Bolsillos",
         "precio" => 845.00,
@@ -288,4 +307,5 @@ $productos = [
         "categoria"=> "Ropa"
     ],
 ];
+
 ?>

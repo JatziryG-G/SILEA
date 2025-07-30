@@ -2,8 +2,6 @@
 include __DIR__ . '/../productos.php'; 
 session_start();
 
-
-// Validar si se recibe el ID por GET
 if (!isset($_GET['id'])) {
     echo "Producto no especificado.";
     exit;
@@ -165,7 +163,7 @@ if (!isset($_GET['id'])) {
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Más</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Carrito</a>
+                                    <a href="cart.php" class="dropdown-item">Carrito</a>
                                     <a href="checkout.html" class="dropdown-item">Pago</a>
                                 </div>
                             </div>
@@ -770,10 +768,10 @@ if (!isset($_GET['id'])) {
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Enlaces</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Principal</a>
-                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Nuestra tienda</a>
-                            <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a>
-                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Carrito</a>
+                            <a class="text-dark mb-2" href="index.php"><i class="fa fa-angle-right mr-2"></i>Principal</a>
+                            <a class="text-dark mb-2" href="shop.php"><i class="fa fa-angle-right mr-2"></i>Nuestra tienda</a>
+                            <a class="text-dark mb-2" href="detail.php"><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a>
+                            <a class="text-dark mb-2" href="cart.php"><i class="fa fa-angle-right mr-2"></i>Carrito</a>
                             <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                             <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contactanos</a>
                         </div>

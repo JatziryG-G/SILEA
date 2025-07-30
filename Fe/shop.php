@@ -331,12 +331,12 @@ $productosPagina = array_slice($productos, $inicio, $porPagina);
                                         <i class="fas fa-eye text-primary mr-1"></i>Ver
                                     </a>
 
-                                <form action="carrito.php" method="POST">
-                                    <input type="hidden" name="id" value="<?= $producto['id'] ?>">
-                                    <button type="submit" class="btn btn-sm text-dark p-0 border-0 bg-transparent">
-                                        <i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar al Carrito
-                                    </button>
-                                </form>
+                                    <form action="agregar_carrito.php" method="POST">
+                                        <input type="hidden" name="id" value="<?= $producto['id'] ?>">
+                                        <button type="submit" class="btn btn-sm text-dark p-0 border-0 bg-transparent">
+                                            <i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar al Carrito
+                                        </button>
+                                    </form>
                             </div>
                         </div>
                     </div>

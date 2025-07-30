@@ -161,7 +161,7 @@ $recienLlegados = array_filter($productos, function($producto) use ($recienLlega
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Más</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Carrito</a>
+                                    <a href="cart.php" class="dropdown-item">Carrito</a>
                                     <a href="checkout.html" class="dropdown-item">Pago</a>
                                 </div>
                             </div>
@@ -363,7 +363,7 @@ $recienLlegados = array_filter($productos, function($producto) use ($recienLlega
                         <i class="fas fa-eye text-primary mr-1"></i>Ver
                     </a>
 
-                    <form action="carrito.php" method="POST">
+                  <form action="agregar_carrito.php" method="POST">
                         <input type="hidden" name="id" value="<?= $producto['id'] ?>">
                         <button type="submit" class="btn btn-sm text-dark p-0 border-0 bg-transparent">
                             <i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar al Carrito
