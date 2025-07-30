@@ -1,0 +1,23 @@
+Array
+(
+    [nombre] => Jatziry
+    [apellidos] => González Galvan
+    [email] => jatzirygonzalez406@gmail.com
+    [telefono] => +527226553625
+    [calle] => 2
+    [referencia] => tienda las palmas
+    [pais] => México
+    [ciudad] => Toluca, Mexico
+    [estado] => MEXICO
+    [cp] => 50904
+    [envio_nombre] => 
+    [envio_apellidos] => 
+    [envio_email] => 
+    [envio_telefono] => 
+    [envio_direccion1] => 
+    [envio_direccion2] => 
+    [envio_pais] => United States
+    [envio_ciudad] => 
+    [envio_estado] => 
+    [envio_cp] => 
+)

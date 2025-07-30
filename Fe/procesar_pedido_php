@@ -1,0 +1,41 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $destinatario = "jatzirygonzalez406@gmail.com";
+
+    $asunto = "Nuevo pedido de SILEA";
+
+    $mensaje = "NUEVO PEDIDO DE SILEA\n\n";
+    $mensaje .= "Nombre: " . $_POST['nombre'] . " " . $_POST['apellidos'] . "\n";
+    $mensaje .= "Correo: " . $_POST['email'] . "\n";
+    $mensaje .= "Teléfono: " . $_POST['telefono'] . "\n";
+    $mensaje .= "Calle: " . $_POST['calle'] . "\n";
+    $mensaje .= "Referencia: " . $_POST['referencia'] . "\n";
+    $mensaje .= "País: " . $_POST['pais'] . "\n";
+    $mensaje .= "Ciudad: " . $_POST['ciudad'] . "\n";
+    $mensaje .= "Estado: " . $_POST['estado'] . "\n";
+    $mensaje .= "Código Postal: " . $_POST['cp'] . "\n\n";
+
+    $mensaje .= "¿Crear cuenta? " . (isset($_POST['crear_cuenta']) ? "Sí" : "No") . "\n";
+    $mensaje .= "¿Enviar a otra dirección? " . (isset($_POST['enviar_otro_lugar']) ? "Sí" : "No") . "\n\n";
+
+    
+    if (isset($_POST['enviar_otro_lugar'])) {
+        $mensaje .= "📦 Dirección de Envío:\n";
+        $mensaje .= "Nombre: " . $_POST['envio_nombre'] . " " . $_POST['envio_apellidos'] . "\n";
+        $mensaje .= "Correo: " . $_POST['envio_email'] . "\n";
+        $mensaje .= "Teléfono: " . $_POST['envio_telefono'] . "\n";
+        $mensaje .= "Dirección: " . $_POST['envio_direccion1'] . " " . $_POST['envio_direccion2'] . "\n";
+        $mensaje .= "Ciudad: " . $_POST['envio_ciudad'] . ", Estado: " . $_POST['envio_estado'] . "\n";
+        $mensaje .= "País: " . $_POST['envio_pais'] . ", CP: " . $_POST['envio_cp'] . "\n\n";
+    }
+
+    $headers = "From: pedidos@silea.com"; 
+
+    if (mail($destinatario, $asunto, $mensaje, $headers)) {
+        echo "<script>alert('Pedido enviado correctamente.'); window.location.href = 'index.php';</script>";
+    } else {
+        echo "<script>alert('Error al enviar el pedido.'); history.back();</script>";
+    }
+} else {
+    echo "Método no permitido.";
+}

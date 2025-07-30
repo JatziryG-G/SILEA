@@ -73,8 +73,8 @@ if (!isset($_GET['id'])) {
                     <a class="text-dark px-2" href="">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a class="text-dark px-2" href="">
-                        <i class="fab fa-linkedin-in"></i>
+                    <!--<a class="text-dark px-2" href="">
+                        <i class="fab fa-linkedin-in"></i>-->
                     </a>
                     <a class="text-dark px-2" href="">
                         <i class="fab fa-instagram"></i>
@@ -289,9 +289,13 @@ if (!isset($_GET['id'])) {
                             </button>
                         </div>
                     </div>
-                    <button class="btn btn-primary px-3">
-                        <i class="fa fa-shopping-cart mr-1"></i> Agregar al carrito
-                    </button>
+                    <form action="agregar_carrito.php" method="POST">
+                            <input type="hidden" name="id" value="<?= $producto['id'] ?>">
+                            <button type="submit" class="btn btn-sm text-dark p-0 border-0 bg-transparent">
+                                <i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar al Carrito
+                        </button>
+                    </form>
+
                 </div>
 
                 <div class="d-flex pt-2">

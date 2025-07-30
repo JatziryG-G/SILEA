@@ -74,6 +74,26 @@ $productos = [
         "nombre" => "Pantalón de pierna ancha de talla alta",
         "precio" => 620.00,
         "imagen" => "img/producto_4.jpg",
+        "imagenes"=>[
+            "img/producto_4.jpg",
+            "img/producto_4_1.jpg",
+            "img/producto_4_2.jpg",
+            "img/producto_4_3.jpg",
+        ],
+        "descripción"=>"Pantalón de pierna ancha de talla alta",
+        "detalles"=>[
+            "ocasion"=>"Informal diario",
+            "patron"=>"Solido",
+            "detalle ropa"=>"Boton",
+            "material"=>"Coquille",
+            "composición"=>"75% Algodón 23% Poliester 2% Elastano ",
+            "ajuste"=>"Regular",
+            "cintura"=>"Cintura alta",
+            "almohadilla"=>"No aplica",
+            "longitud"=>"Largo",
+            "bolsillo"=>"Si",
+
+        ],
         "stock" => 30,
         "categoria"=> "Ropa"
 
@@ -302,7 +322,7 @@ $productos = [
         "id" => 27,
         "nombre" => "Vestido Mini Oversize de Tejido Vaquero Sólido con Bolsillos",
         "precio" => 845.00,
-        "imagen" => "img/PG_6.jpg",
+        "imagen" => "img/Cesta_1.jpg",
         "stock" => 90,
         "categoria"=> "Ropa"
     ],

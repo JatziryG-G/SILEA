@@ -170,7 +170,7 @@ $total = 0;
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Carrito de Compra</h1>
             <div class="d-inline-flex">
-                <p class="m-0"><a href="">Principal</a></p>
+                <p class="m-0"><a href="index.php">Principal</a></p>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Carrito de Compra</p>
             </div>
@@ -267,7 +267,9 @@ $total = 0;
                                 $<?= number_format($subtotal + 10, 2) ?>
                             </h5>
                         </div>
-                        <button class="btn btn-block btn-primary my-3 py-3">Pagar</button>
+                        <a href="checkout.php" class="btn btn-block btn-primary my-3 py-3">
+                            <i class="fas fa-shopping-cart text-primary mr-1"></i> Pagar
+                        </a>                 
                     </div>
                 </div>
             </div>

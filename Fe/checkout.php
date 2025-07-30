@@ -503,10 +503,10 @@ $subtotal = 0;
                             </div>
                         </div>
                     </div>
-                        </form>
                     <div class="card-footer border-secondary bg-transparent">
                         <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Realizar Pedido</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
