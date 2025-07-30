@@ -148,7 +148,7 @@ $total = 0;
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Más</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="cart.php" class="dropdown-item">Carrito</a>
-                                    <a href="checkout.html" class="dropdown-item">Pago</a>
+                                    <a href="checkout.php" class="dropdown-item">Pago</a>
                                 </div>
                             </div>
                             <a href="contact.html" class="nav-item nav-link">Contacto</a>
@@ -469,7 +469,7 @@ $total = 0;
                             <a class="text-dark mb-2" href="shop.php"><i class="fa fa-angle-right mr-2"></i>Nuestra tienda</a>
                             <a class="text-dark mb-2" href="detail.php"><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a>
                             <a class="text-dark mb-2" href="cart.php"><i class="fa fa-angle-right mr-2"></i>Carrito</a>
-                            <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Blog</a>
+                            <a class="text-dark mb-2" href="checkout.php"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                             <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contactanos</a>
                         </div>
                     </div>

@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+$carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
+$subtotal = 0;
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -137,8 +146,8 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Más</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Carrito</a>
-                                    <a href="checkout.html" class="dropdown-item">Pago</a>
+                                    <a href="cart.php" class="dropdown-item">Carrito</a>
+                                    <a href="checkout.php" class="dropdown-item">Pago</a>
                                 </div>
                             </div>
                             <a href="contact.html" class="nav-item nav-link">Contacto</a>
@@ -172,7 +181,124 @@
     <!-- Checkout Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
-            <div class="col-lg-8">
+            <form action="procesar_pedido.php" method="POST">
+    <div class="col-lg-8">
+        <div class="mb-4">
+            <h4 class="font-weight-semi-bold mb-4">Dirección</h4>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label>Nombre: </label>
+                    <input name="nombre" class="form-control" type="text" placeholder="Ann" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Apellidos: </label>
+                    <input name="apellidos" class="form-control" type="text" placeholder="Nava" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>E-mail: </label>
+                    <input name="email" class="form-control" type="email" placeholder="example@email.com" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Numero Telefonico: </label>
+                    <input name="telefono" class="form-control" type="text" placeholder="+52 722 789 6768" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Calle: </label>
+                    <input name="calle" class="form-control" type="text" placeholder="123 Morelos" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Referencia: </label>
+                    <input name="referencia" class="form-control" type="text" placeholder="">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>País: </label>
+                    <select name="pais" class="custom-select" required>
+                        <option value="México" selected>México</option>
+                        <option value="Estados Unidos">Estados Unidos</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Brasil">Brasil</option>
+                    </select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Ciudad: </label>
+                    <input name="ciudad" class="form-control" type="text" placeholder="Toluca" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Estado: </label>
+                    <input name="estado" class="form-control" type="text" placeholder="Estado de México" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Código Postal:</label>
+                    <input name="cp" class="form-control" type="text" placeholder="50 - 000" required>
+                </div>
+                <div class="col-md-12 form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="newaccount" name="crear_cuenta">
+                        <label class="custom-control-label" for="newaccount">Crear una cuenta</label>
+                    </div>
+                </div>
+                <div class="col-md-12 form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="shipto" name="enviar_otro_lugar">
+                        <label class="custom-control-label" for="shipto" data-toggle="collapse" data-target="#shipping-address">Enviar a diferentes direcciones</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapse mb-4" id="shipping-address">
+            <h4 class="font-weight-semi-bold mb-4">Dirección de Envío</h4>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label>First Name</label>
+                    <input name="envio_nombre" class="form-control" type="text" placeholder="John">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Last Name</label>
+                    <input name="envio_apellidos" class="form-control" type="text" placeholder="Doe">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>E-mail</label>
+                    <input name="envio_email" class="form-control" type="text" placeholder="example@email.com">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Mobile No</label>
+                    <input name="envio_telefono" class="form-control" type="text" placeholder="+123 456 789">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Address Line 1</label>
+                    <input name="envio_direccion1" class="form-control" type="text" placeholder="123 Street">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Address Line 2</label>
+                    <input name="envio_direccion2" class="form-control" type="text" placeholder="123 Street">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Country</label>
+                    <select name="envio_pais" class="custom-select">
+                        <option value="United States" selected>United States</option>
+                        <option>Afghanistan</option>
+                        <option>Albania</option>
+                        <option>Algeria</option>
+                    </select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>City</label>
+                    <input name="envio_ciudad" class="form-control" type="text" placeholder="New York">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>State</label>
+                    <input name="envio_estado" class="form-control" type="text" placeholder="New York">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>ZIP Code</label>
+                    <input name="envio_cp" class="form-control" type="text" placeholder="123">
+                </div>
+            </div>
+        </div>
+    </div>
+
+            <!--<div class="col-lg-8">
                 <div class="mb-4">
                     <h4 class="font-weight-semi-bold mb-4">Dirección</h4>
                     <div class="row">
@@ -285,7 +411,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
+
             <div class="col-lg-4">
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
@@ -293,7 +420,35 @@
                     </div>
                     <div class="card-body">
                         <h5 class="font-weight-medium mb-3">Productos:</h5>
-                        <div class="d-flex justify-content-between">
+
+                        <?php foreach ($carrito as $item): 
+                            $totalProducto = $item['precio'] * $item['cantidad'];
+                            $subtotal += $totalProducto;
+                        ?>
+                            <div class="d-flex justify-content-between">
+                                <p><?= htmlspecialchars($item['nombre']) ?> (x<?= $item['cantidad'] ?>)</p>
+                                <p>$<?= number_format($totalProducto, 2) ?></p>
+                            </div>
+                        <?php endforeach; ?>
+
+                        <?php
+                            $envio = 10;
+                            $total = $subtotal + $envio;
+                            ?>
+                            <div class="d-flex justify-content-between mb-3 pt-1">
+                                <h6 class="font-weight-medium">Subtotal</h6>
+                                <h6 class="font-weight-medium">$<?= number_format($subtotal, 2) ?></h6>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <h6 class="font-weight-medium">Envío</h6>
+                                <h6 class="font-weight-medium">$<?= number_format($envio, 2) ?></h6>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5 class="font-weight-bold">Total</h5>
+                                <h5 class="font-weight-bold">$<?= number_format($total, 2) ?></h5>
+                            </div>
+
+                        <!--<div class="d-flex justify-content-between">
                             <p>Vestido Mini de Camiseta Vaquera Oversized con Corte</p>
                             <p>$780.00</p>
                         </div>
@@ -321,7 +476,9 @@
                             <h5 class="font-weight-bold">$1729.98</h5>
                         </div>
                     </div>
-                </div>
+                </div>-->
+                        
+
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">Metodo de Pago: </h4>
@@ -346,6 +503,7 @@
                             </div>
                         </div>
                     </div>
+                        </form>
                     <div class="card-footer border-secondary bg-transparent">
                         <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Realizar Pedido</button>
                     </div>
@@ -388,7 +546,7 @@
                             <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Nuestra tienda</a>
                             <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a>
                             <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Carrito</a>
-                            <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Blog</a>
+                            <a class="text-dark mb-2" href="checkout.php"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                             <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contactanos</a>
                         </div>
                     </div>
