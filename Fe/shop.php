@@ -1,15 +1,13 @@
 <?php
-include __DIR__ . '/../productos.php'; // o ajusta la ruta si es distinta
+include __DIR__ . '/../productos.php'; 
 
-// Configuración de paginación
 $porPagina = 9;
 $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$paginaActual = max($paginaActual, 1); // Asegurar que no sea menor a 1
+$paginaActual = max($paginaActual, 1); 
 $totalProductos = count($productos);
 $totalPaginas = ceil($totalProductos / $porPagina);
 $inicio = ($paginaActual - 1) * $porPagina;
 
-// Obtener los productos a mostrar en esta página
 $productosPagina = array_slice($productos, $inicio, $porPagina);
 ?>
 
@@ -148,7 +146,7 @@ $productosPagina = array_slice($productos, $inicio, $porPagina);
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link">Principal</a>
                             <a href="shop.php" class="nav-item nav-link active">Comprar</a>
-                            <a href="detail.html" class="nav-item nav-link">Cesta</a>
+                            <a href="detail.php" class="nav-item nav-link">Cesta</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Más</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -346,9 +344,9 @@ $productosPagina = array_slice($productos, $inicio, $porPagina);
                 <?php else: ?>
                     <p class="text-center">No hay productos disponibles.</p>
                 <?php endif; ?>
-            </div> <!-- CIERRA SOLO LOS PRODUCTOS -->
+            </div> 
 
-            <!-- Paginación debe estar fuera del row de productos -->
+            
             <nav>
                 <ul class="pagination justify-content-center">
                     <?php if ($paginaActual > 1): ?>
@@ -371,7 +369,7 @@ $productosPagina = array_slice($productos, $inicio, $porPagina);
                 </ul>
             </nav>
         </div>
-    </div> <!-- AQUÍ se cierra la row que alinea filtro y productos -->
+    </div> 
 </div>
 
     <!-- Shop Product end -->    
@@ -404,10 +402,10 @@ $productosPagina = array_slice($productos, $inicio, $porPagina);
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Enlaces</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Principal</a>
-                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Nuestra tienda</a>
-                            <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a>
-                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Carrito</a>
+                            <a class="text-dark mb-2" href="index.php"><i class="fa fa-angle-right mr-2"></i>Principal</a>
+                            <a class="text-dark mb-2" href="shop.php"><i class="fa fa-angle-right mr-2"></i>Nuestra tienda</a>
+                            <a class="text-dark mb-2" href="detail.php"><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a>
+                            <a class="text-dark mb-2" href="cart.php"><i class="fa fa-angle-right mr-2"></i>Carrito</a>
                             <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                             <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contactanos</a>
                         </div>

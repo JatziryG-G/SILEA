@@ -5,6 +5,26 @@ $productos = [
         "nombre" => "Crop Top rayado con cuello en barco",
         "precio" => 230.00,
         "imagen" => "img/producto_1.jpg",
+        "imagenes"=>[
+            "img/producto_1.jpg",
+            "img/producto_1_2.jpg",
+            "img/producto_1_3.jpg",
+        ],
+        "descripción"=>"",
+        "detalles"=>[
+            "ocasion"=>"Escuela",
+            "patron"=>"Rayas",
+            "detalle ropa"=>"Raya",
+            "material"=>"Coquille",
+            "composición"=>"95% Poliester 5% Elastano",
+            "ajuste"=>"Regular",
+            "cintura"=>"No aplica",
+            "almohadilla"=>"Sin relleno",
+            "longitud"=>"Corto",
+            "bolsillo"=>"No aplica",
+
+        ],
+
         "stock" => 20,
         "categoria"=> "Ropa"
     ],
@@ -24,6 +44,26 @@ $productos = [
         "nombre" => "Top de tirantes de punto con cuello redondo y botones",
         "precio" => 550.00,
         "imagen" => "img/producto_3.jpg",
+                "imagenes"=>[
+            "img/producto_3.jpg",
+            "img/producto_3_1.jpg",
+            "img/producto_3_2.jpg",
+            "img/producto_3_3.jpg",
+        ],
+        "descripción"=>"",
+        "detalles"=>[
+            "ocasion"=>"Informal diario, Escuela",
+            "patron"=>"Solido",
+            "detalle ropa"=>"Boton",
+            "material"=>"Coquille",
+            "composición"=>"50% Biscosa 28% Poliester 22% Poliamida",
+            "ajuste"=>"Regular",
+            "cintura"=>"No aplica",
+            "almohadilla"=>"Sin relleno",
+            "longitud"=>"Regular",
+            "bolsillo"=>"No aplica",
+
+        ],
         "stock" => 25,
         "categoria"=> "Ropa"
 

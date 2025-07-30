@@ -1,3 +1,52 @@
+<?php
+
+session_start();
+include 'productos.php'; 
+
+if (!isset($_GET['id'])) {
+    header('Location: shop.php');
+    exit;
+}
+
+$id = $_GET['id'];
+$producto = null;
+
+foreach ($productos as $p) {
+    if ($p['id'] == $id) {
+        $producto = $p;
+        break;
+    }
+}
+
+if (!$producto) {
+    header('Location: shop.php');
+    exit;
+}
+
+//inicia el acrrito
+if (!isset($_SESSION['carrito'])) {
+    $_SESSION['carrito'] = [];
+}
+
+
+if (isset($_SESSION['carrito'][$id])) {
+    $_SESSION['carrito'][$id]['cantidad']++;
+} else {
+    $_SESSION['carrito'][$id] = [
+        'id' => $producto['id'],
+        'nombre' => $producto['nombre'],
+        'precio' => $producto['precio'],
+        'imagen' => $producto['imagen'],
+        'cantidad' => 1
+    ];
+}
+
+header('Location: carrito.php'); 
+exit;
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -131,9 +180,9 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link">Principal</a>
-                            <a href="shop.html" class="nav-item nav-link active">Comprar</a>
-                            <a href="detail.html" class="nav-item nav-link">Cesta</a>
+                            <a href="index.php" class="nav-item nav-link">Principal</a>
+                            <a href="shop.php" class="nav-item nav-link active">Comprar</a>
+                            <a href="detail.php" class="nav-item nav-link">Cesta</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Más</a>
                                 <div class="dropdown-menu rounded-0 m-0">
